@@ -1,0 +1,2 @@
+# MSSQL-Egitimim
+MSSQL Egitimim
