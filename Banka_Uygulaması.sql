@@ -1,6 +1,6 @@
---Basit bir uygulama 3 tablolu Deneyen ve aynı sonuçlara ulaşan herkese başarılar dilerim.
+--Basit bir uygulama 3 tablolu Deneyen ve aynÄ± sonuÃ§lara ulaÅŸan herkese baÅŸarÄ±lar dilerim.
 
-use [Banka Uygulaması] 
+use [Banka UygulamasÄ±] 
 
 
 select * from Musteriler
@@ -9,16 +9,16 @@ select * from Islemler
 
 alter table Hesaplar add KullanilanBanka varchar(30);	
 alter table musteriler drop column maas;
-alter table Hesaplar alter column HesapBakiyesi decimal; --bu komut tablodaki veritipinin adını değiştirir.
+alter table Hesaplar alter column HesapBakiyesi decimal; --bu komut tablodaki veritipinin adÄ±nÄ± deÄŸiÅŸtirir.
 
-insert into Musteriler values (13,'Adem Alık','Trabzon','Memur')
-insert into Hesaplar values (11,'Aslı Kuru','Vadeli',72,'Akbank')
-insert into Islemler values (5,'Aslı Kuru','10.07.2025')
+insert into Musteriler values (13,'Adem AlÄ±k','Trabzon','Memur')
+insert into Hesaplar values (11,'AslÄ± Kuru','Vadeli',72,'Akbank')
+insert into Islemler values (5,'AslÄ± Kuru','10.07.2025')
 
 
 select * from Musteriler where MusteriMeslek='Memur'
-select * from Musteriler where MusteriMeslek='Memur' and MusteriSehir='Kırşehir'
-select * from Musteriler where MusteriMeslek='Futbolcu' or MusteriSehir='Kırşehir'
+select * from Musteriler where MusteriMeslek='Memur' and MusteriSehir='KÄ±rÅŸehir'
+select * from Musteriler where MusteriMeslek='Futbolcu' or MusteriSehir='KÄ±rÅŸehir'
 select * from musteriler where MusteriSehir in('Sivas','Ankara')
 
 select * from Hesaplar where HesapTuru like'%Y_%'
@@ -28,23 +28,23 @@ select distinct MusteriMeslek from Musteriler
 select * from Musteriler order by MusteriAdSoyad asc;
 select * from Musteriler order by MusteriMeslek desc;
 
---2 değer arasındaki veriyi listeler
+--2 deÄŸer arasÄ±ndaki veriyi listeler
 select * from Hesaplar where HesapBakiyesi between 85000 or 100000;
-select UPPER(MusteriAdSoyad) as 'Müşteri Ad Soyad Büyük Harf' from Musteriler
-select lower(MusteriAdSoyad) as 'Müşteri Ad Soyad küçük Harf' from Musteriler
+select UPPER(MusteriAdSoyad) as 'MÃ¼ÅŸteri Ad Soyad BÃ¼yÃ¼k Harf' from Musteriler
+select lower(MusteriAdSoyad) as 'MÃ¼ÅŸteri Ad Soyad kÃ¼Ã§Ã¼k Harf' from Musteriler
 
-select SUM(HesapBakiyesi) as 'Toplam Maaş' from Hesaplar 
-select MAX(HesapBakiyesi) as 'En Yüksek Maaş' from Hesaplar group by HesapBakiyesi
-select Min(HesapBakiyesi) as 'En Düşük Maaş' from Hesaplar group by HesapBakiyesi
-select AVG(HesapBakiyesi) as 'Maaş Ortalaması' from Hesaplar
+select SUM(HesapBakiyesi) as 'Toplam MaaÅŸlar : ' from Hesaplar 
+select MAX(HesapBakiyesi) as 'En YÃ¼ksek MaaÅŸ : ' from Hesaplar group by HesapBakiyesi
+select Min(HesapBakiyesi) as 'En DÃ¼ÅŸÃ¼k MaaÅŸ : ' from Hesaplar group by HesapBakiyesi
+select AVG(HesapBakiyesi) as 'MaaÅŸ OrtalamasÄ± : ' from Hesaplar
 select count(MusteriID) FROM Musteriler
 select top(7) * from Musteriler
 
-select MusteriSehir,COUNT(MusteriSehir) as 'Hangi Şehirde Kaç Müşteri Var' from Musteriler group by MusteriSehir;
-select MusteriSehir,COUNT(MusteriSehir) as 'Hangi Şehirde Kaç Müşteri Var' from Musteriler group by MusteriSehir order by MusteriSehir DESC;
+select MusteriSehir,COUNT(MusteriSehir) as 'Hangi Åehirde KaÃ§ MÃ¼ÅŸteri Var' from Musteriler group by MusteriSehir;
+select MusteriSehir,COUNT(MusteriSehir) as 'Hangi Åehirde KaÃ§ MÃ¼ÅŸteri Var' from Musteriler group by MusteriSehir order by MusteriSehir DESC;
 
-SELECT KullanilanBanka,min(HesapBakiyesi) as 'En düşük Maaşlı Kişi',
-MAX (HesapBakiyesi) as 'En Yüksek modelli araç markası' 
+SELECT KullanilanBanka,min(HesapBakiyesi) as 'En dÃ¼ÅŸÃ¼k MaaÅŸlÄ± KiÅŸi',
+MAX (HesapBakiyesi) as 'En YÃ¼ksek MaaÅŸlÄ± KiÅŸi' 
 from Hesaplar
 Group by KullanilanBanka
 
@@ -73,14 +73,15 @@ select MusteriAdiSoyad, MIN(HesapBakiyesi) from Hesaplar group by MusteriAdiSoya
 
 
 
---2 tablo arasında da ortak olan verileri'sutünları' getirir.
+--2 tablo arasÄ±nda da ortak olan verileri'sutÃ¼nlarÄ±' getirir.
 select	MusteriAdSoyad from Musteriler
 intersect
 select MusteriAdiSoyad from Hesaplar
---2 tablo arasında da ortak olmayan verileri'sutünları' getirir.
+--2 tablo arasÄ±nda da ortak olmayan verileri'sutÃ¼nlarÄ±' getirir.
 select	MusteriAdSoyad from Musteriler
 except
 select MusteriAdiSoyad from Hesaplar
+
 
 
 
